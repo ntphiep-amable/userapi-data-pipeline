@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+  # kafka ----------------------------------
   zookeeper:
       image: confluentinc/cp-zookeeper:7.4.0
       hostname: zookeeper
@@ -75,6 +76,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+      
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.4.0
     hostname: control-center
@@ -103,6 +105,8 @@ services:
       timeout: 10s
       retries: 5
 
+
+  # airflow ----------------------------------
   webserver:
     image: apache/airflow:2.6.0-python3.9
     command: webserver
@@ -163,6 +167,7 @@ services:
     networks:
       - confluent
 
+  # spark ----------------------------------
   spark-master:
     image: bitnami/spark:latest
     command: bin/spark-class org.apache.spark.deploy.master.Master
@@ -171,6 +176,7 @@ services:
       - "7077:7077"
     networks:
       - confluent
+
   spark-worker:
     image: bitnami/spark:latest
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
@@ -184,6 +190,8 @@ services:
     networks:
       - confluent
 
+      
+  # cassandra ----------------------------------
   cassandra_db:
     image: cassandra:latest
     container_name: cassandra

@@ -1,12 +1,14 @@
 # Realtime Data Streaming | End-to-End Data Engineering Project
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [System Architecture](#system-architecture)
-- [What You'll Learn](#what-youll-learn)
-- [Technologies](#technologies)
-- [Getting Started](#getting-started)
-- [Watch the Video Tutorial](#watch-the-video-tutorial)
+- [Realtime Data Streaming | End-to-End Data Engineering Project](#realtime-data-streaming--end-to-end-data-engineering-project)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [System Architecture](#system-architecture)
+  - [What You'll Learn](#what-youll-learn)
+  - [Technologies](#technologies)
+  - [Getting Started](#getting-started)
+  - [Watch the Video Tutorial](#watch-the-video-tutorial)
 
 ## Introduction
 
@@ -14,7 +16,7 @@ This project serves as a comprehensive guide to building an end-to-end data engi
 
 ## System Architecture
 
-![System Architecture](https://github.com/airscholar/e2e-data-engineering/blob/main/Data%20engineering%20architecture.png)
+![System Architecture](imgs/../img/Data%20engineering%20architecture.png)
 
 The project is designed with the following components:
 
