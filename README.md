@@ -69,3 +69,67 @@ For more detailed instructions, please check out the video tutorial linked below
 ## Watch the Video Tutorial
 
 For a complete walkthrough and practical demonstration, check out our [YouTube Video Tutorial](https://www.youtube.com/watch?v=GqAcTrqKcrY). -->
+
+
+# Realtime Data Streaming Project
+
+## Table of Contents
+
+- [Realtime Data Streaming Project](#realtime-data-streaming-project)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [System Architecture](#system-architecture)
+  - [Technologies](#technologies)
+  - [Getting Started](#getting-started)
+- [References](#references)
+
+
+
+## Introduction
+
+This project serves as a comprehensive guide to building an end-to-end data engineering pipeline. It covers each stage from data ingestion to processing and finally to storage, utilizing a robust tech stack that includes Apache Airflow, Python, Apache Kafka, Apache Zookeeper, Apache Spark, and Cassandra. Everything is containerized using Docker for ease of deployment and scalability.
+
+
+## System Architecture
+
+![System Architecture](img/architecture.png)
+
+The project is designed with the following components:
+
+- **Data Source**: Getting data from this public API: https://randomuser.me/
+- **Apache Airflow**: Responsible for orchestrating the pipeline. Thee pipeline has only 1 task which is to fetch data from the API and then send it to Kafka Producer.
+
+- **Apache Kafka and Zookeeper**: Used for streaming data from API to Spark processing.
+- **Control Center and Schema Registry**: Helps in monitoring and schema management of our Kafka streams.
+- **Apache Spark**: For data processing with its master and worker nodes.
+- **Cassandra**: Where the processed data will be stored.
+
+
+## Technologies
+
+- Apache Airflow
+- Apache Kafka, Apache Zookeeper
+- Apache Spark
+- Cassandra
+- PostgreSQL
+- Docker, Docker compose
+- Python
+
+
+
+## Getting Started
+
+Clone this repo and then run the following command to start the project:
+
+```bash
+docker-compose up -d
+```
+
+After that, you can access the following services:
+- Airflow: http://localhost:8080
+- Control Center: http://localhost:9021
+- Spark Master: http://localhost:8081
+
+
+# References
+- [YouTube Video Tutorial](https://www.youtube.com/watch?v=GqAcTrqKcrY)
