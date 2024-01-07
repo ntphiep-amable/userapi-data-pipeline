@@ -1,6 +1,5 @@
 from datetime import datetime
 from airflow import DAG
-from airflow.operators.python import PythonOperator
 from airflow.decorators import dag, task
 from airflow.models.baseoperator import chain
 
@@ -23,6 +22,7 @@ def format_data(res):
     data = {}
  
     location = res['location']
+
     data['id'] = uuid.uuid4()
     data['first_name'] = res['name']['first']
     data['last_name'] = res['name']['last']
@@ -40,32 +40,9 @@ def format_data(res):
     return data
 
 
-# def stream_data():
-    
 
 
-# # with DAG(
-# #     'stream_data',
-# #     default_args={
-# #         'owner': 'hiep',
-# #         'start_date': datetime(2023, 12, 30, 10, 00),
-# #     },
-# #     schedule_interval='@daily',
-# #     catchup=False,
-# # ) as dag:
-
-# #     stream_data = PythonOperator(
-# #         task_id='stream_data_from_api',
-# #         python_callable=stream_data
-# #     )
-# #     stream_data
-    
-
-# stream_data()
-
-
-
-
+# Define DAG
 @dag(
     dag_id='stream_data',
     default_args={
@@ -90,14 +67,15 @@ def kafka_stream() -> DAG:
         while time.time() < curr_time + 60:
             try:
                 res = get_data()
-                res = format_data(res)
+                data = format_data(res)
 
-                producer.send('users_created', json.dumps(res).encode('utf-8'))
+                producer.send(topic='users_created', 
+                              value=json.dumps(data).encode('utf-8'))
 
             except Exception as e:
                 logging.error(f'An error occurred: {e}')
                 continue
 
 
-    stream_data()
+    chain(stream_data())
     
