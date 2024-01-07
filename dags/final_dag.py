@@ -38,28 +38,32 @@ def format_data(res):
     return data
 
 
-def stream_data():
+# def stream_data():
     
 
 
 
 
 
-# with DAG(
-#     'stream_data',
-#     default_args={
-#         'owner': 'hiep',
-#         'start_date': datetime(2023, 12, 30, 10, 00),
-#     },
-#     schedule_interval='@daily',
-#     catchup=False,
-# ) as dag:
+# # with DAG(
+# #     'stream_data',
+# #     default_args={
+# #         'owner': 'hiep',
+# #         'start_date': datetime(2023, 12, 30, 10, 00),
+# #     },
+# #     schedule_interval='@daily',
+# #     catchup=False,
+# # ) as dag:
 
-#     stream_data = PythonOperator(
-#         task_id='stream_data_from_api',
-#         python_callable=stream_data
-#     )
-#     stream_data
+# #     stream_data = PythonOperator(
+# #         task_id='stream_data_from_api',
+# #         python_callable=stream_data
+# #     )
+# #     stream_data
     
 
-stream_data()
+# stream_data()
+
+
+
+
